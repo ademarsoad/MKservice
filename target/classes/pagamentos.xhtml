@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<h:outputStylesheet library="css" name="normalize.css" />
+	<h:outputStylesheet library="css" name="estilo.css" />
+
+	<title>Pagamento</title>
+
+</h:head>
+<body>
+    <div id="page" >
+   <header>
+			<nav>
+				<ul id="navigation">
+					<li><a href="principal.xhtml">Tela Principal</a></li>
+					<li><a href="cadastrocliente.xhtml">Clientes</a></li>
+					<li><a href="produtos.xhtml">Produtos</a></li>
+					<li><a href="estoque.xhtml">Estoque</a></li>
+					<li><a href="pagamentos.xhtml">Pagamentos</a></li>
+					<li><a href="#">Aniversariantes</a></li>
+				</ul>
+			</nav>
+		</header>
+        
+    <p>Caixa</p>
+
+    <p>
+        <form>
+            <fieldset>
+                <legend>Cliente</legend>
+                
+                    <label for="cliente" >Cliente:</label>
+                    <input type="text" id="cliente" />
+ 
+                    <input type="submit" value="Pesquisar" id="submit" />
+                
+                  <table cellpadding="10" cellspacig="5" >
+                <tr>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Endereço</th>
+                    
+                </tr>
+                <tr>
+                    <th>Ademar Couto</th>
+                    <th>987432941</th>
+                    <th>Rua francisco chaga mendes, 668</th>
+                    
+                </tr>
+                <tr>
+                    <th>Antonio</th>
+                    <th>988774455</th>
+                    <th>Rua Alguma coisa, 123</th>
+                    
+                </tr>
+                
+            </table>
+
+        </fieldset>
+            
+              
+        </form>
+    </p>
+    <p>
+        <form>
+            <fieldset>
+                <legend>Produto</legend>
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" />
+                <input type="submit"  id="submit" value="Pesquisar" />
+                <table cellpadding="10" cellspacig="5">
+                <tr>
+                    <th>Nome</th>
+                    <th>Descriçao</th>
+                    <th>Valor Unitário</th>
+                    <th>Quantidade</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Base</th>
+                    <th>Cor branca para pele escura</th>
+                    <th>R$ 120,00</th>
+                    <th>12 unidades</th>
+                    <th><input type="button" value="Adicionar" /></th>
+                </tr>
+                <tr>
+                    <th>Batom</th>
+                    <th>Cor vermelho</th>
+                    <th>R$ 15,00</th>
+                    <th>10 unidades</th>
+                    <th><input type="button" value="Adicionar" /></th>
+                </tr>
+                
+            </table>
+            </fieldset>
+            
+            <fieldset>
+                <legend>Carrinho de Compra</legend>
+                
+                <table cellpadding="10" cellspacig="5">
+                   <tr>
+                        <th>Itens</th>
+                        <th>Nome</th>
+                        <th>Quantidade</th>
+                        <th>Valor Unitario</th>
+                        <th>Valor Total</th>
+                    </tr>
+                    <tr>
+                        <th>1</th>
+                        <th>Base</th>
+                        <th>2</th>
+                        <th>R$ 120,00</th>
+                        <th>R$ 240,00</th>
+                    </tr>
+                    <tr>
+                        <th>2</th>
+                        <th>Batom</th>
+                        <th>1</th>
+                        <th>R$ 15,00</th>
+                        <th>R$ 15,00</th>
+                    </tr>
+                    <tr>
+                        <th></th>    
+                        <th></th>
+                        <th></th>
+                        <th>Total da Compra</th>
+                        <th>R$ 255,00</th>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+    </p>
+
+    
+    <footer> 
+			
+			
+    </footer>
+    <div class="rodape_linha">2020 MKService</div>
+</div>
+</body>
+
+</html>

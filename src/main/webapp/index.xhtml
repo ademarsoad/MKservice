@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<h:outputStylesheet library="css" name="normalize.css" />
+	<h:outputStylesheet library="css" name="estilo.css" />
+
+	<title>Login</title>
+</h:head>
+<h:body>
+	<div class="body">
+		<div class="login_image">
+			<img src="images/seguro2.png"
+				alt="Informa seu login e senha para acessar a pagiana" />
+		</div>
+
+		<h:form>
+		<h:messages />
+			<div class="login">
+				<h:outputLabel for="login">Login</h:outputLabel> <h:inputText id="login" value="#{loginBean.login.usuario}" /><br />
+				<h:outputLabel for="senha">Senha</h:outputLabel> <h:inputSecret id="senha" value="#{loginBean.login.senha}" /><br />
+				<h:commandButton value="Logar" class="botoes" action="#{loginBean.logar}" />
+			</div>
+		</h:form>
+	</div>
+</h:body>
+</html>

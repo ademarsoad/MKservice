@@ -1,0 +1,175 @@
+body {
+	font-size: 12px;
+	font-family: "Courrier New", Courier, monospace;
+	letter-spacing: 0.15em;
+	background-color: #efefef;
+}
+
+#page {
+	max-width: 90%;
+	margin: 10px auto 10px auto;
+	padding: 20px;
+	border: 4px double #000;
+	background-color: #ffffff;
+}
+
+#logo {
+	width: 150px;
+	margin: 10px auto 25px auto;
+}
+
+ul {
+	width: 80%;
+	padding: 15px;
+	margin: 0px auto 0px auto;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	text-align: center;
+	background-color: pink;
+}
+
+li {
+	display: inline-block;
+	margin: 0px 3px;
+	padding: 5px;
+}
+
+p {
+	font-size: 25px;
+	text-align: center;
+	width: 35%;
+	margin: 20px auto 20px auto;
+	font-weight: normal;
+}
+
+a {
+	color: #000000;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 6px 18px 5px 18px;
+}
+
+a:hover, a.on {
+	color: #cc3333;
+	background-color: #ffffff;
+}
+
+img {
+	width: 100%;
+}
+
+.rodape {
+	overflow: auto;
+	background-color: pink;
+}
+
+.rodape_linha {
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 10px;
+}
+
+.rodape_coluna {
+	width: 33.333%;
+	float: left;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.rodape_titulo {
+	color: #fff;
+	padding: 0 10px 10px 0;
+	font-size: 18px;
+}
+
+.rodape_texto {
+	font-style: normal;
+	text-align: left;
+	font-size: 12px;
+	color: #fff;
+	margin-left: 10px;
+	width: auto;
+}
+
+.formulario {
+	border-bottom: 1px solid #efefef;
+	margin: 10px;
+	padding-bottom: 10px;
+	width: 30%;
+	text-align: right;
+}
+
+.formulario label {
+	font-size: 15px;
+	float: left;
+	display: inline-block;
+}
+
+
+
+legend {
+	padding: 0;
+	font-family: Verdana, sans-serif;
+	font-size: 20px;
+}
+
+.botoes {
+	color: #efefef;
+	background-color: pink;
+	border-radius: 10px;
+	margin: 5px;
+}
+
+.login .botoes {
+	color: #efefef;
+	background-color: pink;
+	border-radius: 10px;
+	margin: 5px;
+}
+
+.login {
+	text-align: center;
+	background-color: pink;
+	padding: 5px;
+}
+
+.login_image {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	width: 150px;
+	height: 150px;
+	padding: 10px;
+}
+
+#desc {
+	height: 70px;
+	width: 170px;
+	resize: none;
+}
+
+table {
+	margin: auto;
+	width: 90%;
+}
+
+.tr_cabecalho {
+	font-family: cursive, sans-serif;
+	font-size: 15px;
+	background-color: #ccc;
+}
+
+th, td {
+	background-color: pink;
+}
+
+
+@media ( max-width : 720px) {
+	#page {
+		height: 100%;
+	}
+	.formulario {
+		width: 100%;
+	}
+}

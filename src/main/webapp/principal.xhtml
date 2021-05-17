@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<h:outputStylesheet library="css" name="normalize.css" />
+	<h:outputStylesheet library="css" name="estilo.css" />
+
+	<title>MKService</title>
+
+</h:head>
+<body>
+    <div id="page">
+
+		<header>
+			<nav>
+				<ul id="navigation">
+					<li><a href="principal.xhtml">Tela Principal</a></li>
+					<li><a href="cadastrocliente.xhtml">Clientes</a></li>
+					<li><a href="produtos.xhtml">Produtos</a></li>
+					<li><a href="estoque.xhtml">Estoque</a></li>
+					<li><a href="pagamentos.xhtml">Pagamentos</a></li>
+					<li><a href="#">Aniversariantes</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div>
+			<article>
+				<p style="font-size: 30px">Bem Vindo #{loginBean.login.usuario}</p>
+			</article>
+			<article>
+				<p>Bem Vindo ao seu serviço de controle para suas vendas da
+					MaryKay, sempre vizando facilitar seu controle de estoque, vendas,
+					entre muitas outras coisas.</p>
+
+			</article>
+        </div>
+        <p>
+            <img src="images/produtos-mary-kay.jpg" alt="Veja nosso catalogo de produtos " />
+        </p>
+		
+		<footer class="rodape" > 
+			<!--
+			<div class="rodape_coluna">
+				<h2 class="rodape_titulo">Quem Somos</h2>
+				<p class="rodape_texto">
+					Bem Vindo ao seu serviço de controle para suas vendas da
+					MaryKay, sempre vizando facilitar seu controle de estoque, vendas,
+					entre muitas outras coisas.
+					
+				</p>
+			</div>
+			
+			<div class="rodape_coluna">
+				<h2 class="rodape_titulo">Links</h2>
+			<nav>
+				<ul>
+					<li><a href="principal.html">Tela Principal</a></li>
+					<li><a href="cadastrocliente.html">Clientes</a></li>
+					<li><a href="produtos.html">Produtos</a></li>
+					<li><a href="/MKservice/aniversariantes.xhtml">Aniversariantes</a></li>
+					<li><a href="#">Estoque</a></li>
+					<li><a href="#">Pagamentos</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="rodape_coluna">
+			<h2 class="rodape_titulo">Redes Sociais</h2>
+			<nav>
+				<ul>
+					<li><a href="#">Instagram</a></li>
+					<li><a href="#">Twitter</a></li>
+					<li><a href="#">Facebook</a></li>
+					
+				</ul>
+			</nav>
+		</div> -->
+		</footer>
+		<div class="rodape_linha">2020 MKService</div>
+	</div>
+</body>
+</html>

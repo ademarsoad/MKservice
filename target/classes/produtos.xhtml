@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<h:outputStylesheet library="css" name="normalize.css" />
+	<h:outputStylesheet library="css" name="estilo.css" />
+	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	<title>Produtos</title>
+	<style>
+.form_campo {
+	border-radius: 3px;
+	box-shadow: inset 0 2px 2px #8f8f8f;
+	padding: 4px;
+}
+.textArea {
+	resize: none;
+}
+</style>
+<style type="text/css">
+    .box,
+    .sample-layout > div {
+        background-color: pink;
+        text-align: center;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        border-radius: 4px;
+        margin-top: 5px;
+    }
+ 
+    .box-stretched {
+        height: 100%;
+    }
+ 
+    .sample-layout {
+        margin: 0;
+    }
+ 
+    .sample-layout > div {
+        border: 1px solid #ffffff;
+    }
+ 
+    .vertical-container {
+        margin: 0;
+        height: 200px;
+        background: #efefef;
+        border-radius: 4px;
+    }
+ 
+    .nested-grid .p-col-4 {
+        padding-bottom: 1em;
+    }
+</style>
+
+</h:head>
+<h:body>
+	<div id="page">
+		<header>
+			<nav>
+				<ul id="navigation">
+					<li><a href="principal.xhtml">Tela Principal</a></li>
+					<li><a href="cadastrocliente.xhtml">Clientes</a></li>
+					<li><a href="produtos.xhtml">Produtos</a></li>
+					<li><a href="estoque.xhtml">Estoque</a></li>
+					<li><a href="pagamentos.xhtml">Pagamentos</a></li>
+					<li><a href="#">Aniversariantes</a></li>
+				</ul>
+			</nav>
+		</header>
+		<p>Cadastro de Produtos</p>
+
+		<p>
+			<h:form>
+				<h:messages showDetail="true" showSummary="false"
+					styleClass="form-messages" errorClass="error" infoClass="info" />
+				<fieldset>
+					<legend>Informações do Produto</legend>
+					<div class="formulario">
+						<h:outputLabel for="nome">Nome:</h:outputLabel>
+						<h:inputText id="nome" value="#{produtosBean.produtos.titulo}"
+							required="true" styleClass="form_campo" />
+					</div>
+					<div class="formulario">
+						<h:outputLabel for="desc">Descrição:</h:outputLabel>
+						<h:inputTextarea value="#{produtosBean.produtos.desc}" id="desc"
+							name="descricao" rows="5" cols="33" styleClass="textArea" ></h:inputTextarea>
+						<br />
+					</div>
+					<div class="formulario">
+						<h:outputLabel for="valor">Valor:</h:outputLabel>
+						<p:inputNumber value="#{produtosBean.produtos.valor}" id="valor"
+							symbol="R$ " symbolPosition="p" decimalSeparator=","
+							thousandSeparator="." required="true" />
+						<!-- <h:inputText value="#{produtosBean.produtos.valor}" id="valor" />  -->
+					</div>
+					<div class="formulario">
+						<h:outputLabel for="categoria">Categoria:</h:outputLabel>
+						<h:selectOneMenu value="#{produtosBean.produtos.categoria}"
+							name="Categoria" id="categoria">
+							<f:selectItem itemLabel="Categoria do Produto"
+								noSelectionOption="true" />
+							<f:selectItems value="#{categoriaBean.listaCategoria}"
+								var="categoria" itemValue="#{categoria.id}"
+								itemLabel="#{categoria.nome}" />
+						</h:selectOneMenu>
+					</div>
+					<div class="formulario">
+						<h:outputLabel for="quant">Quantidade:</h:outputLabel>
+						<h:inputText value="#{produtosBean.produtos.quantidade}"
+							id="quant" styleClass="form_campo" />
+					</div>
+					
+					<div class="formulario">
+						<h:outputLabel for="checaComplemento" >Complemento</h:outputLabel>
+						<h:selectBooleanCheckbox id="checaComplemento" value="#{complementoProdutoBean.complemento.complementos}"
+						immediate="true" valueChangeListener="#{complementoProdutoBean.checaComplemento}" onchange="submit();" />
+					</div>
+					
+					<p:commandButton icon="pi pi-plus" action="#{complementoProdutoBean.increment}" update="output" />
+					<p:commandButton icon="pi pi-minus" action="#{complementoProdutoBean.decrease}" update="output" />
+					 
+					    <p:outputPanel id="output">
+					        <div class="p-grid p-dir-col" style="margin-top: .5em">
+					            <ui:repeat var="column"  value="#{complementoProdutoBean.columns}" >
+					                <div class="p-col">
+					                    <div class="box">
+					                        #{column}
+					                    </div>
+					                </div>
+					            </ui:repeat>
+					            </div>
+					    </p:outputPanel>
+					<h:commandButton value="Cadastrar" actionListener="#{produtosBean.salvarProdutos}"
+						 action="#{complementoProdutoBean.salvarComplemento}"  class="botoes" />
+
+					
+				</fieldset>
+				
+			</h:form>
+			
+		</p>
+			
+		<p>
+		<h:form id="pesquisa">
+			<fieldset>
+				<legend>Pesquisa de Produtos</legend>
+				<label for="nome">Nome </label> 
+				<p:inputText id="nome" value="#{produtosBean.produtos.titulo}" >
+				<p:ajax
+						listener="#{produtosBean.pesquisaProduto(produtosBean.produtos.titulo)}"
+						update="tabelaCliente" event="keyup" />
+				</p:inputText> 
+			</fieldset>
+
+		<h:dataTable value="#{produtosBean.listaProduto}" var="pro" id="tabelaCliente" >
+			<f:facet name="header">Clientes Cadastrados</f:facet>
+         	
+         	<h:column>
+         		<f:facet name="header">ID</f:facet>
+         		<h:outputText value="#{pro.id}" />
+         	</h:column>
+         	
+         	<h:column>
+         		<f:facet name="header">Nome</f:facet>
+         		<h:outputText value="#{pro.titulo}" />
+         	</h:column>
+         	
+         	<h:column>
+         		<f:facet name="header">Descrição</f:facet>
+         		<h:outputText value="#{pro.desc}" />
+         	</h:column>
+         	
+         	<h:column>
+         		<f:facet name="header">Valor</f:facet>
+         		<h:outputText value="#{pro.valor}" />
+         	</h:column>
+         	
+         	<h:column>
+         		<f:facet name="header">Quantidade</f:facet>
+         		<h:outputText value="#{pro.quantidade}" />
+         	</h:column>
+		</h:dataTable>
+		</h:form>
+		</p>
+
+		<footer> </footer>
+		<div class="rodape_linha">2020 MKService</div>
+	</div>
+</h:body>
+</html>

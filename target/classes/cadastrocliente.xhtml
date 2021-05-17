@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	>
+
+<h:head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<h:outputStylesheet library="css" name="normalize.css" />
+	<h:outputStylesheet library="css" name="estilo.css" />
+
+	<title>Cliente</title>
+	
+	<script type="text/javascript">
+	PrimeFaces.locales['pt'] = {
+            closeText: 'Fechar',
+            prevText: 'Anterior',
+            nextText: 'Próximo',
+            currentText: 'Começo',
+            monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+            monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],
+            dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+            dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+            dayNamesMin: ['D','S','T','Q','Q','S','S'],
+            weekHeader: 'Semana',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: '',
+            timeOnlyTitle: 'Só Horas',
+            timeText: 'Tempo',
+            hourText: 'Hora',
+            minuteText: 'Minuto',
+            secondText: 'Segundo',
+            currentText: 'Data Atual',
+            ampm: false,
+            month: 'Mês',
+            week: 'Semana',
+            day: 'Dia',
+            allDayText : 'Todo Dia'
+        };
+	
+	
+	</script>
+	
+</h:head>
+<h:body>
+	<div id="page">
+		<header>
+			<nav>
+				<ul id="navigation">
+					<li><a href="principal.xhtml">Tela Principal</a></li>
+					<li><a href="cadastrocliente.xhtml">Clientes</a></li>
+					<li><a href="produtos.xhtml">Produtos</a></li>
+					<li><a href="estoque.xhtml">Estoque</a></li>
+					<li><a href="pagamentos.xhtml">Pagamentos</a></li>
+					<li><a href="#">Aniversariantes</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<p>Cadastro de clientes</p>
+
+		<p>
+			<h:form>
+			<h:messages showDetail="true" showSummary="false" 
+			styleClass="form-messages" errorClass="error" infoClass="info" />
+				<fieldset>
+					<legend>Informações do Cliente</legend>
+					<div class="formulario">
+						<label for="nome">Nome:</label>
+						<h:inputText value="#{clientebean.cliente.nome}" id="nome" required="true" />
+						<br />
+					</div>
+					<div class="formulario">
+						<label for="telefone">Telefone:</label>
+						<h:inputText id="telefone" value="#{clientebean.cliente.tel}" required="true" />
+						<br />
+					</div>
+					
+					<div class="formulario">
+						<label for="email">Email:</label>
+						<h:inputText value="#{clientebean.cliente.email}" id="email" />
+						<br />
+					</div>
+					
+					<div class="formulario">
+						<label for="data_nasc">Nascimento:</label>
+						<p:calendar value="#{clientebean.cliente.dataAniversario}" id="data_nasc" locale="pt" pattern="dd/MM/yyyy" navigator="true" />
+						<br />
+					</div>
+					
+					<FIELDSET>
+					<legend>Endereço</legend>
+						<div class="formulario">
+							<label for="cep">CEP:</label>
+							<h:inputText value="#{enderecoBean.endereco.cep}" id="cep" />
+							<h:commandButton value="Verificar CEP" action="#{enderecoBean.buscaCep}"  />
+							<br />
+						</div>
+						
+						<div class="formulario">
+							<label for="rua">Rua:</label>
+							<h:inputText value="#{enderecoBean.endereco.rua}" id="rua" />
+							<br />
+						</div>
+						
+						<div class="formulario">
+							<label for="numero">Numero:</label>
+							<h:inputText value="#{enderecoBean.endereco.numero}" id="numero" />
+							<br />
+							
+						</div>
+						
+						<div class="formulario">
+							<label for="bairro">Bairro:</label>
+							<h:inputText value="#{enderecoBean.endereco.bairro}" id="bairro" />
+							<br />
+						</div>
+						
+						<div class="formulario">
+							<label for="complemento">Complemento:</label>
+							<h:inputText value="#{enderecoBean.endereco.complemento}" id="complemento" />
+							<br />
+						</div>
+					
+					</FIELDSET>
+					<h:commandButton id="submit" value="Cadastrar" actionListener="#{clientebean.cadastrarCliente}" 
+					class="botoes" action="#{enderecoBean.salvarEndereco}"  />
+
+				</fieldset>
+			</h:form>
+
+		</p>
+		<p>
+		<h:form id="pesquisa">
+			<fieldset>
+				<legend>Pesquisa de Cliente</legend>
+				<label for="nome">Nome</label> 
+				<p:inputText id="nome" value="#{clientebean.cliente.nome}" >
+				<p:ajax
+						listener="#{clientebean.pesquisaCliente(clientebean.cliente.nome)}"
+						update="tabelaCliente" event="keyup" />
+				</p:inputText> 
+			</fieldset>
+
+		<h:dataTable value="#{clientebean.listaCliente}" var="cli" id="tabelaCliente" >
+			<f:facet name="header">Clientes Cadastrados</f:facet>
+         	
+         	<h:column>
+         		<f:facet name="header">ID</f:facet>
+         		<h:outputText value="#{cli.id_cliente}" />
+         	</h:column>
+         	
+         	<h:column>
+         		<f:facet name="header">Nome</f:facet>
+         		<h:outputText value="#{cli.nome}" />
+         	</h:column>
+         	<h:column>
+         		<f:facet name="header">Telefone</f:facet>
+         		<h:outputText value="#{cli.tel}" />
+         	</h:column>
+         	<h:column>
+         		<f:facet name="header">Email</f:facet>
+         		<h:outputText value="#{cli.email}" />
+         	</h:column>
+         	
+		</h:dataTable>
+		</h:form>
+		</p>
+		
+		<footer> </footer>
+		<div class="rodape_linha">2020 MKService</div>
+	</div>
+</h:body>
+
+</html>
